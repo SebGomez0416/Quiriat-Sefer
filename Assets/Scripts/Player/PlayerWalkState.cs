@@ -13,6 +13,7 @@ public class PlayerWalkState : ICharacterStates
     public Type UpdateState()
     {
         _player.Animator.SetTrigger("Walk");
+        SetWeapon();
        
         if (Input.GetMouseButtonDown(0))
         {
@@ -25,5 +26,11 @@ public class PlayerWalkState : ICharacterStates
         }
 
         return _player.Agent.velocity == Vector3.zero ? typeof(PlayerIdleState) :_player.NewState;
+    }
+    
+    private void SetWeapon()
+    {
+        _player.Weapon.SetActive(true);
+        _player.WeaponBack.SetActive(false);
     }
 }

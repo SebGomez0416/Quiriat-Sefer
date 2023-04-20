@@ -12,6 +12,19 @@ public class Player : MonoBehaviour
     private const float DOUBLE_CLIK_TIME = 0.2F;
     private float lastCLickTime;
     private Type newState;
+    [SerializeField]private GameObject weapon;
+    [SerializeField]private GameObject weaponBack;
+    public GameObject Weapon
+    {
+        get => weapon;
+        set => weapon = value;
+    }
+    
+    public GameObject WeaponBack
+    {
+        get => weaponBack;
+        set => weaponBack = value;
+    }
 
     public Type NewState
     {

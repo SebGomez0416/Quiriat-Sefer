@@ -13,6 +13,8 @@ public class PlayerIdleState : ICharacterStates
     public Type UpdateState()
     {
         _player.Animator.SetTrigger("Idle");
+        SetWeapon();
+
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -25,6 +27,12 @@ public class PlayerIdleState : ICharacterStates
         }
 
         return _player.Agent.velocity != Vector3.zero ? _player.NewState : null;
+    }
+
+    private void SetWeapon()
+    {
+        _player.Weapon.SetActive(true);
+        _player.WeaponBack.SetActive(false);
     }
 
     

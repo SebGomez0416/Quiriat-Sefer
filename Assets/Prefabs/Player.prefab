@@ -140,8 +140,8 @@ MonoBehaviour:
   weaponBack: {fileID: 197658333072779436}
   bullet: {fileID: 5113874625558920924, guid: b0b2d7c8136bdbb40b7af5edc3a1de26, type: 3}
   spawnPoint: {fileID: 195961580}
-  shotForce: 1500
-  shotRate: 0.5
+  shotForce: 3000
+  shotRate: 0.3
 --- !u!195 &1044642585161348339
 NavMeshAgent:
   m_ObjectHideFlags: 0

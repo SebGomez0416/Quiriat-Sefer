@@ -15,17 +15,10 @@ public class PlayerWalkState : ICharacterStates
         _player.Animator.SetTrigger("Walk");
         SetWeapon();
        
-        if (Input.GetMouseButtonDown(0))
-        {
-            RaycastHit hit;
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+       _player.IsDoubleClick();
+       _player.IsShoot();
 
-            if (Physics.Raycast(ray, out hit))
-                _player.Agent.destination = hit.point;
-            _player.isDoubleClick();
-        }
-
-        return _player.Agent.velocity == Vector3.zero ? typeof(PlayerIdleState) :_player.NewState;
+       return _player.Agent.velocity == Vector3.zero && !_player._isShoot ? typeof(PlayerIdleState) :_player.NewState;
     }
     
     private void SetWeapon()

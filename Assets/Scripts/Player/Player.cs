@@ -14,6 +14,43 @@ public class Player : MonoBehaviour
     private Type newState;
     [SerializeField]private GameObject weapon;
     [SerializeField]private GameObject weaponBack;
+    [SerializeField]private GameObject bullet;
+    [SerializeField] private Transform spawnPoint;
+    private bool isShoot;
+
+    [Header("Settings")] 
+    [SerializeField] private float shotForce;
+    [SerializeField] private float shotRate;
+    private float shotRateTime;
+    
+    public GameObject Bullet => bullet;
+
+    public Transform SpawnPoint => spawnPoint;
+    
+    public float ShotForce
+    {
+        get => shotForce;
+        set => shotForce = value;
+    }
+
+    public float ShotRate
+    {
+        get => shotRate;
+        set => shotRate = value;
+    }
+
+    public float ShotRateTime
+    {
+        get => shotRateTime;
+        set => shotRateTime = value;
+    }
+    
+    public bool _isShoot
+    {
+        get => isShoot;
+        set => isShoot = value;
+    }
+    
     public GameObject Weapon
     {
         get => weapon;
@@ -69,22 +106,48 @@ public class Player : MonoBehaviour
 
     }
 
-    public void isDoubleClick()
+    public void IsDoubleClick()
     {
-        float timeSinceLastClick = Time.time - lastCLickTime;
-        
-        if (timeSinceLastClick <= DOUBLE_CLIK_TIME)
+        if (Input.GetMouseButtonDown(0))
         {
-            Agent.speed = RunSpeed;
-            newState= typeof(PlayerRunState);
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+            if (Physics.Raycast(ray, out hit))
+                Agent.destination = hit.point;
+
+            float timeSinceLastClick = Time.time - lastCLickTime;
+
+            if (timeSinceLastClick <= DOUBLE_CLIK_TIME)
+            {
+                Agent.speed = RunSpeed;
+                newState = typeof(PlayerRunState);
+            }
+            else
+            {
+                Agent.speed = WalkSpeed;
+                newState = typeof(PlayerWalkState);
+            }
+
+            lastCLickTime = Time.time;
+
+        }
+    }
+
+    public void IsShoot()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            _isShoot = true;
+            Agent.isStopped = true;
+            Agent.destination = transform.position;
+            NewState = typeof(PlayerShootState);
         }
         else
         {
-            Agent.speed = WalkSpeed;
-            newState= typeof(PlayerWalkState);
+            _isShoot = false;
+            Agent.isStopped = false;
         }
-
-        lastCLickTime = Time.time;
     }
 
     

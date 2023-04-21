@@ -14,7 +14,8 @@ public class PlayerStates : MonoBehaviour
       {
          { typeof(PlayerIdleState), new PlayerIdleState(player) },
          { typeof(PlayerRunState), new PlayerRunState(player) },
-         { typeof(PlayerWalkState), new PlayerWalkState(player) }
+         { typeof(PlayerWalkState), new PlayerWalkState(player) },
+         { typeof(PlayerShootState), new PlayerShootState(player) }
       };
       
       ChangeState(typeof(PlayerIdleState));

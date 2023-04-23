@@ -10,8 +10,11 @@ public class IASensor : MonoBehaviour
     [SerializeField] private Color detectedColor;
     [SerializeField] private float maxVisionDistance;
     [SerializeField] private Transform target;
+    [SerializeField] private float angleOffset;
     private bool detected;
-
+    
+    public Transform Target => target;
+    public float AngleOffset => angleOffset;
     public bool Detected => detected;
     public float MaxVisionDistance => maxVisionDistance;
     public Color DetectedColor => detectedColor;
@@ -22,8 +25,8 @@ public class IASensor : MonoBehaviour
         get => visionAngle;
         set => visionAngle = value;
     }
-
-    private void Update()
+    
+    public void UpdateSensor()
     {
         detected = false;
         Vector3 playerVector = target.position - transform.position;
@@ -43,12 +46,12 @@ public class EnemyVisionSensor : Editor
    {
         var ai= target as IASensor;
 
-        Vector3 startPoint = Mathf.Cos(-ai.VisionAngle * Mathf.Deg2Rad)*ai.transform.forward +
-                             Mathf.Sin(ai.VisionAngle* Mathf.Deg2Rad)* -ai.transform.right;
+        Vector3 startPoint = Mathf.Cos((ai.VisionAngle+ai.AngleOffset) * Mathf.Deg2Rad)*ai.transform.forward +
+                             Mathf.Sin((ai.VisionAngle+ai.AngleOffset)* Mathf.Deg2Rad)* -ai.transform.right;
         
 
         Handles.color =ai.Detected? ai.DetectedColor: ai.VisionColor;
-        Handles.DrawSolidArc(ai.transform.position,Vector3.up,startPoint,ai.VisionAngle*2f,ai.MaxVisionDistance);
+        Handles.DrawSolidArc(ai.transform.position,Vector3.up,startPoint,(ai.VisionAngle+ai.AngleOffset)*2f,ai.MaxVisionDistance);
 
    }
 }

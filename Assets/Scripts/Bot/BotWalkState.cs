@@ -16,14 +16,22 @@ public class BotWalkState : ICharacterStates
     public Type UpdateState()
     {
         _bot.Animator.SetTrigger("Walk");
+        _bot.Weapon.SetActive(false);
 
         if (_bot.IsPatrol)
         {
             _bot.Agent.destination = SetPatrolRoute();
             _bot.IsPatrol = false;
+            _bot.NewState = null;
         }
 
-        return _bot.transform.position == _bot.Agent.destination? typeof(BotIdleState):null;
+        if (_bot.transform.position == _bot.Agent.destination)
+        {
+            _bot.NewState = typeof(BotIdleState);
+        }
+        _bot.IsDetected();
+
+        return  _bot.NewState;
     }
 
     private Vector3 SetPatrolRoute()

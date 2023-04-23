@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -10,7 +11,52 @@ public class Bot : MonoBehaviour
     private Animator _animator;
     private bool isPatrol;
     [SerializeField]private Transform[] patrolPoints;
+    private IASensor iaSensor;
+    private Type newState;
+    [SerializeField]private GameObject weapon;
+    [SerializeField]private GameObject bullet;
+    [SerializeField] private Transform spawnPoint;
+    
+    [Header("Settings")] 
+    [SerializeField] private float shotForce;
+    [SerializeField] private float shotRate;
+    private float shotRateTime;
 
+    
+    public GameObject Weapon => weapon;
+    public GameObject Bullet => bullet;
+    public Transform SpawnPoint => spawnPoint;
+    
+    public float ShotForce
+    {
+        get => shotForce;
+        set => shotForce = value;
+    }
+
+    public float ShotRate
+    {
+        get => shotRate;
+        set => shotRate = value;
+    }
+
+    public float ShotRateTime
+    {
+        get => shotRateTime;
+        set => shotRateTime = value;
+    }
+
+    public IASensor _iaSensor
+    {
+        get => iaSensor;
+        set => iaSensor = value;
+    }
+    
+    public Type NewState
+    {
+        get => newState;
+        set => newState = value;
+    }
+    
     public Transform[] PatrolPoints => patrolPoints;
     
     public bool IsPatrol
@@ -34,6 +80,7 @@ public class Bot : MonoBehaviour
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        _iaSensor = GetComponent<IASensor>();
     }
 
     private void Start()
@@ -45,7 +92,13 @@ public class Bot : MonoBehaviour
     private void Update()
     {
         _botState.UpdateState();
+        iaSensor.UpdateSensor();
+    }
 
+    public void IsDetected()
+    {
+        if (iaSensor.Detected)
+            newState = typeof(BotShootState);
     }
 
 

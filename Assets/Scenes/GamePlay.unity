@@ -701,12 +701,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5412c698c289c24eb16797230fc9c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionAngle: 45
+  visionAngle: 90
   visionColor: {r: 0.38614988, g: 1, b: 0, a: 0.16470589}
   detectedColor: {r: 1, g: 0, b: 0, a: 0.09803922}
   maxVisionDistance: 60
   target: {fileID: 1322928412}
-  angleOffset: 12
 --- !u!1 &1848190730
 GameObject:
   m_ObjectHideFlags: 0
@@ -837,7 +836,7 @@ PrefabInstance:
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 59.8
+      value: 90.8
       objectReference: {fileID: 0}
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
@@ -847,7 +846,7 @@ PrefabInstance:
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 79.5
+      value: 33.5
       objectReference: {fileID: 0}
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
@@ -912,7 +911,7 @@ PrefabInstance:
     - target: {fileID: 5866666020855195690, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5866666020855195690, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
@@ -977,7 +976,7 @@ PrefabInstance:
     - target: {fileID: 8411849225814697145, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 106.9
+      value: 58.8
       objectReference: {fileID: 0}
     - target: {fileID: 8411849225814697145, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
@@ -987,7 +986,7 @@ PrefabInstance:
     - target: {fileID: 8411849225814697145, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 64.7
+      value: 9.5
       objectReference: {fileID: 0}
     - target: {fileID: 8411849225814697145, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}

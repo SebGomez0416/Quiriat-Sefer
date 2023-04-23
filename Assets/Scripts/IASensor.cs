@@ -10,48 +10,49 @@ public class IASensor : MonoBehaviour
     [SerializeField] private Color detectedColor;
     [SerializeField] private float maxVisionDistance;
     [SerializeField] private Transform target;
-    [SerializeField] private float angleOffset;
     private bool detected;
     
-    public Transform Target => target;
-    public float AngleOffset => angleOffset;
-    public bool Detected => detected;
-    public float MaxVisionDistance => maxVisionDistance;
-    public Color DetectedColor => detectedColor;
-    public Color VisionColor => visionColor;
-    
-    public float VisionAngle
+    public Color VisionColor
     {
-        get => visionAngle;
-        set => visionAngle = value;
+        get => visionColor;
+        set => visionColor = value;
     }
-    
+
+    public Color DetectedColor
+    {
+        get => detectedColor;
+        set => detectedColor = value;
+    }
+    public float MaxVisionDistance => maxVisionDistance;
+    public float VisionAngle => visionAngle;
+    public Transform Target => target;
+    public bool Detected => detected;
+
+
     public void UpdateSensor()
     {
         detected = false;
         Vector3 playerVector = target.position - transform.position;
-
-        if (Vector3.Dot(playerVector.normalized, transform.forward) > Mathf.Cos(VisionAngle))
+        if (Vector3.Angle(playerVector.normalized, transform.forward) < visionAngle * 0.5f)
         {
             if (playerVector.magnitude < maxVisionDistance)
                 detected = true;
-            
         }
     }
 }
+
 [CustomEditor(typeof(IASensor))]
 public class EnemyVisionSensor : Editor
 {
    public void OnSceneGUI()
    {
         var ai= target as IASensor;
+        float halfVisionAngle = ai.VisionAngle * 0.5f;
 
-        Vector3 startPoint = Mathf.Cos((ai.VisionAngle+ai.AngleOffset) * Mathf.Deg2Rad)*ai.transform.forward +
-                             Mathf.Sin((ai.VisionAngle+ai.AngleOffset)* Mathf.Deg2Rad)* -ai.transform.right;
-        
+        Vector3 startPoint = Mathf.Cos(-halfVisionAngle  * Mathf.Deg2Rad) * ai.transform.forward +
+                             Mathf.Sin(halfVisionAngle  * Mathf.Deg2Rad) * -ai.transform.right;
 
         Handles.color =ai.Detected? ai.DetectedColor: ai.VisionColor;
-        Handles.DrawSolidArc(ai.transform.position,Vector3.up,startPoint,(ai.VisionAngle+ai.AngleOffset)*2f,ai.MaxVisionDistance);
-
+        Handles.DrawSolidArc(ai.transform.position,Vector3.up,startPoint,ai.VisionAngle,ai.MaxVisionDistance);
    }
 }

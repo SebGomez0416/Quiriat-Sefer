@@ -17,11 +17,10 @@ public class BotIdleState : ICharacterStates
         _bot.Animator.SetTrigger("Idle");
         _bot.Weapon.SetActive(false);
         _bot.Agent.isStopped = false;
-        
         Timer();
         _bot.IsDetected();
 
-        return  _bot.IsPatrol? _bot.NewState:null;
+        return _bot.NewState;
     }
 
     private void Timer()

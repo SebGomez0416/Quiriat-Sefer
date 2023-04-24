@@ -22,7 +22,6 @@ public class Bot : MonoBehaviour
     [SerializeField] private float shotRate;
     private float shotRateTime;
 
-    
     public GameObject Weapon => weapon;
     public GameObject Bullet => bullet;
     public Transform SpawnPoint => spawnPoint;
@@ -86,7 +85,6 @@ public class Bot : MonoBehaviour
     private void Start()
     {
         _botState = new BotState(this);
-       
     }
 
     private void Update()
@@ -100,9 +98,5 @@ public class Bot : MonoBehaviour
         if (iaSensor.Detected)
             newState = typeof(BotShootState);
     }
-
-
-
-
 
 }

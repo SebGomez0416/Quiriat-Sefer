@@ -22,7 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
     private float shotRateTime;
-    
+    private Vector3 enemyPosition;
+
+    public Vector3 EnemyPosition => enemyPosition;
     public GameObject Bullet => bullet;
 
     public Transform SpawnPoint => spawnPoint;
@@ -113,8 +115,19 @@ public class Player : MonoBehaviour
             RaycastHit hit;
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            if (Physics.Raycast(ray, out hit))
-                Agent.destination = hit.point;
+            if (Physics.Raycast(ray,out hit))
+            {
+                if (hit.collider.CompareTag("Enemy"))
+                {
+                    enemyPosition = hit.transform.position;
+                }
+                else
+                {
+                    enemyPosition = Vector3.zero;
+                    Agent.destination = hit.point;
+                }
+            }
+                
 
             float timeSinceLastClick = Time.time - lastCLickTime;
 
@@ -150,10 +163,4 @@ public class Player : MonoBehaviour
         }
     }
 
-    
-
-   
-
-   
-    
 }

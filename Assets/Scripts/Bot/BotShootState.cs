@@ -1,8 +1,9 @@
 using System;
+
 using UnityEngine;
 using UnityEditor;
 
-public class BotShootState :ICharacterStates
+public class BotShootState : ICharacterStates
 {
     private Bot _bot;
 
@@ -15,9 +16,8 @@ public class BotShootState :ICharacterStates
     {
         _bot.Animator.SetTrigger("Shoot");
         _bot.Weapon.SetActive(true);
-        
-        //hacer un lerp
-        _bot.transform.forward = _bot._iaSensor.Target.position -_bot.transform.position;
+
+        _bot.transform.forward=_bot._iaSensor.Target.position- _bot.transform.position;
 
         _bot.Agent.isStopped = true;
         _bot.Agent.destination = _bot.transform.position;
@@ -36,4 +36,5 @@ public class BotShootState :ICharacterStates
 
         return _bot.NewState;
     }
+
 }

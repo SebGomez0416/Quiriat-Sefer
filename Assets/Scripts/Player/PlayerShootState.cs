@@ -16,8 +16,8 @@ public class PlayerShootState : ICharacterStates
         _player.Animator.SetTrigger("Shoot");
         SetWeapon();
 
-        if (_player.EnemyPosition != Vector3.zero)
-            _player.transform.forward = _player.EnemyPosition - _player.transform.position;
+        if (_player.EnemyPosition != null)
+            _player.transform.forward = _player.EnemyPosition.transform.position - _player.transform.position;
 
 
         if (_player._isShoot)

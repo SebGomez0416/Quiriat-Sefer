@@ -33,6 +33,8 @@ public class BotShootState : ICharacterStates
 
         _bot.NewState = typeof(BotIdleState);
         _bot.IsDetected();
+        
+        if (_bot.IsDamage) _bot.NewState = typeof(BotDeathState);
 
         return _bot.NewState;
     }

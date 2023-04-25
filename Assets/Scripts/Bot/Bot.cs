@@ -4,7 +4,7 @@ using UnityEngine.AI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Bot : MonoBehaviour
+public class Bot : MonoBehaviour,IDamageable
 {
     private NavMeshAgent _agent;
     private BotState _botState;
@@ -16,11 +16,25 @@ public class Bot : MonoBehaviour
     [SerializeField]private GameObject weapon;
     [SerializeField]private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
-    
-    [Header("Settings")] 
+
+    [Header("Settings")]
+    [SerializeField] private short life;
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
     private float shotRateTime;
+    private bool isDamage;
+
+    public short Life
+    {
+        get => life;
+        set => life = value;
+    }
+
+    public bool IsDamage
+    {
+        get => isDamage;
+        set => isDamage = value;
+    }
 
     public GameObject Weapon => weapon;
     public GameObject Bullet => bullet;
@@ -97,6 +111,12 @@ public class Bot : MonoBehaviour
     {
         if (iaSensor.Detected)
             newState = typeof(BotShootState);
+    }
+    
+    public void OnDamage(short damage)
+    {
+        life -= damage;
+        isDamage = true;
     }
 
 }

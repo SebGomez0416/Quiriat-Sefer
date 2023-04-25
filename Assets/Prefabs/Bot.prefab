@@ -1,5 +1,36 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1921149638
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1921149639}
+  m_Layer: 0
+  m_Name: SpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1921149639
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1921149638}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.003, y: 0.204, z: 0.727}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8411849227673556375}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &478618968684301249
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,9 +1213,11 @@ GameObject:
   - component: {fileID: 2476074454965927619}
   - component: {fileID: 5866666020855195690}
   - component: {fileID: 5866666020855195691}
+  - component: {fileID: 1491586067}
+  - component: {fileID: 1491586066}
   m_Layer: 0
   m_Name: Bot
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1240,6 +1273,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcc75804aa2b4064094f44a9f21af96e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  patrolPoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  weapon: {fileID: 9220896904732217133}
+  bullet: {fileID: 5113874625558920924, guid: b0b2d7c8136bdbb40b7af5edc3a1de26, type: 3}
+  spawnPoint: {fileID: 1921149639}
+  life: 90
+  shotForce: 2000
+  shotRate: 2
 --- !u!195 &5866666020855195691
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1250,11 +1294,11 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
-  m_Acceleration: 8
+  m_Speed: 6
+  m_Acceleration: 10
   avoidancePriority: 50
-  m_AngularSpeed: 120
-  m_StoppingDistance: 0
+  m_AngularSpeed: 1000
+  m_StoppingDistance: 1
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1262,6 +1306,36 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!65 &1491586067
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9220896903211007491}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.463787, y: 5.292533, z: 2.1651716}
+  m_Center: {x: 0.08273506, y: 2.9638014, z: -0.04559183}
+--- !u!114 &1491586066
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9220896903211007491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5412c698c289c24eb16797230fc9c7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  visionAngle: 38
+  visionColor: {r: 0.38614988, g: 1, b: 0, a: 0.16470589}
+  detectedColor: {r: 1, g: 0, b: 0, a: 0.09803922}
+  maxVisionDistance: 20
+  target: {fileID: 0}
 --- !u!1001 &8301925426010075772
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1339,6 +1413,12 @@ PrefabInstance:
 --- !u!4 &8411849227673556375 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 907ee3b312f3ae9499ad25d8996eaad2,
+    type: 3}
+  m_PrefabInstance: {fileID: 8301925426010075772}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &9220896904732217133 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 907ee3b312f3ae9499ad25d8996eaad2,
     type: 3}
   m_PrefabInstance: {fileID: 8301925426010075772}
   m_PrefabAsset: {fileID: 0}

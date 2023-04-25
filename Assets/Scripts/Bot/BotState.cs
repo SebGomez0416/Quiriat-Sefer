@@ -16,7 +16,8 @@ public class BotState : MonoBehaviour
         {
             { typeof(BotIdleState), new BotIdleState(bot) },
             { typeof(BotShootState), new BotShootState(bot) },
-            { typeof(BotWalkState), new BotWalkState(bot) }
+            { typeof(BotWalkState), new BotWalkState(bot) },
+            { typeof(BotDeathState), new BotDeathState(bot) }
         };
 
         ChangeState(typeof(BotIdleState));
@@ -33,5 +34,7 @@ public class BotState : MonoBehaviour
     {
         CurrentState = _botStates[newState];
     }
+    
+    
     
 }

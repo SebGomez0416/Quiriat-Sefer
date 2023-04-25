@@ -22,9 +22,9 @@ public class Player : MonoBehaviour
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
     private float shotRateTime;
-    private Vector3 enemyPosition;
+    private GameObject enemyPosition;
 
-    public Vector3 EnemyPosition => enemyPosition;
+    public GameObject EnemyPosition => enemyPosition;
     public GameObject Bullet => bullet;
 
     public Transform SpawnPoint => spawnPoint;
@@ -119,11 +119,11 @@ public class Player : MonoBehaviour
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    enemyPosition = hit.transform.position;
+                    enemyPosition = hit.transform.gameObject;
                 }
                 else
                 {
-                    enemyPosition = Vector3.zero;
+                    enemyPosition = null;
                     Agent.destination = hit.point;
                 }
             }
@@ -162,5 +162,4 @@ public class Player : MonoBehaviour
             Agent.isStopped = false;
         }
     }
-
 }

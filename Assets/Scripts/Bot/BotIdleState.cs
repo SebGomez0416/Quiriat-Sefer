@@ -6,7 +6,6 @@ public class BotIdleState : ICharacterStates
     private Bot _bot;
     private float time;
     
-
     public BotIdleState(Bot bot)
     {
         _bot = bot;
@@ -16,9 +15,10 @@ public class BotIdleState : ICharacterStates
     {    
         _bot.Animator.SetTrigger("Idle");
         _bot.Weapon.SetActive(false);
-        _bot.Agent.isStopped = false;
         Timer();
         _bot.IsDetected();
+        
+        if (_bot.IsDamage) _bot.NewState = typeof(BotDeathState);
 
         return _bot.NewState;
     }

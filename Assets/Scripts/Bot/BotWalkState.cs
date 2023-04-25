@@ -17,6 +17,7 @@ public class BotWalkState : ICharacterStates
     {
         _bot.Animator.SetTrigger("Walk");
         _bot.Weapon.SetActive(false);
+        _bot.Agent.isStopped = false;
 
         if (_bot.IsPatrol)
         {
@@ -30,6 +31,8 @@ public class BotWalkState : ICharacterStates
             _bot.NewState = typeof(BotIdleState);
         }
         _bot.IsDetected();
+        
+        if (_bot.IsDamage) _bot.NewState = typeof(BotDeathState);
 
         return  _bot.NewState;
     }

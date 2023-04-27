@@ -17,8 +17,9 @@ public class PlayerIdleState : ICharacterStates
 
         _player.IsDoubleClick();
         _player.IsShoot();
+        if (_player.IsDamage) _player.NewState = typeof(PlayerDeathState);
 
-        return _player.Agent.velocity != Vector3.zero || _player._isShoot ? _player.NewState : null;
+        return _player.Agent.velocity != Vector3.zero || _player._isShoot || _player.IsDamage ? _player.NewState : null;
     }
 
     private void SetWeapon()

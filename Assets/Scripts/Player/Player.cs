@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.AI;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Player : MonoBehaviour
+public class Player : MonoBehaviour,IDamageable
 {
     private NavMeshAgent _agent;
     private PlayerStates _playerState;
@@ -19,15 +19,28 @@ public class Player : MonoBehaviour
     private bool isShoot;
 
     [Header("Settings")] 
+    [SerializeField] private short life;
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
     private float shotRateTime;
     private GameObject enemyPosition;
-
+    private bool isDamage;
+    
     public GameObject EnemyPosition => enemyPosition;
     public GameObject Bullet => bullet;
-
     public Transform SpawnPoint => spawnPoint;
+    
+    public short Life
+    {
+        get => life;
+        set => life = value;
+    }
+
+    public bool IsDamage
+    {
+        get => isDamage;
+        set => isDamage = value;
+    }
     
     public float ShotForce
     {
@@ -162,4 +175,11 @@ public class Player : MonoBehaviour
             Agent.isStopped = false;
         }
     }
+    
+    public void OnDamage(short damage)
+    {
+        life -= damage;
+        isDamage = true;
+    }
 }
+

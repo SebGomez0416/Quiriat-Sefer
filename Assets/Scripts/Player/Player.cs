@@ -25,6 +25,7 @@ public class Player : MonoBehaviour,IDamageable
     private float shotRateTime;
     private GameObject enemyPosition;
     private bool isDamage;
+    private ISelectable obj;
     
     public GameObject EnemyPosition => enemyPosition;
     public GameObject Bullet => bullet;
@@ -123,6 +124,7 @@ public class Player : MonoBehaviour,IDamageable
 
     public void IsDoubleClick()
     {
+       
         if (Input.GetMouseButtonDown(0))
         {
             RaycastHit hit;
@@ -132,11 +134,15 @@ public class Player : MonoBehaviour,IDamageable
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
-                    enemyPosition = hit.transform.gameObject;
+                   enemyPosition = hit.transform.gameObject;
+                   obj = enemyPosition.GetComponent<ISelectable>();
+                   obj?.SetSelection(true);
                 }
                 else
                 {
+                    obj?.SetSelection(false);
                     enemyPosition = null;
+                    obj = null;
                     Agent.destination = hit.point;
                 }
             }

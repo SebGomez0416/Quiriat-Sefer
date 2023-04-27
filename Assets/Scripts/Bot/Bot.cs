@@ -1,10 +1,11 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Bot : MonoBehaviour,IDamageable
+public class Bot : MonoBehaviour,IDamageable,ISelectable
 {
     private NavMeshAgent _agent;
     private BotState _botState;
@@ -21,8 +22,14 @@ public class Bot : MonoBehaviour,IDamageable
     [SerializeField] private short life;
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
+    private float maxLife;
     private float shotRateTime;
     private bool isDamage;
+    private SkinnedMeshRenderer mat;
+    private Color standart;
+    [SerializeField] private Color colorless;
+    [SerializeField] private Image lifeBar;
+    [SerializeField] private GameObject _ui;
 
     public short Life
     {
@@ -94,6 +101,10 @@ public class Bot : MonoBehaviour,IDamageable
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
         _iaSensor = GetComponent<IASensor>();
+        mat = GetComponentInChildren<SkinnedMeshRenderer>();
+        standart = mat.materials[1].color;
+        mat.materials[1].color = colorless;
+        maxLife = life;
     }
 
     private void Start()
@@ -105,6 +116,7 @@ public class Bot : MonoBehaviour,IDamageable
     {
         _botState.UpdateState();
         iaSensor.UpdateSensor();
+        UpdateLifeBar();
     }
 
     public void IsDetected()
@@ -119,4 +131,18 @@ public class Bot : MonoBehaviour,IDamageable
         isDamage = true;
     }
 
+    public void SetSelection(bool state)
+    {
+        // activa y desactiva el OutLine
+        mat.materials[1].color = state ? standart : colorless;
+        
+        //activa y desactiva la barra de vida
+        _ui.SetActive(state);
+    }
+
+    private void UpdateLifeBar()
+    {
+        _ui.transform.forward = iaSensor.Target.position-_ui.transform.position;
+        lifeBar.fillAmount = life/maxLife;
+    }
 }

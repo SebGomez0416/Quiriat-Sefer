@@ -650,10 +650,19 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1322928412}
+    - target: {fileID: 1491586066, guid: 286f0623ffc3cd745b1b3b17277c137d, type: 3}
+      propertyPath: visionAngle
+      value: 174
+      objectReference: {fileID: 0}
     - target: {fileID: 2128229169, guid: 286f0623ffc3cd745b1b3b17277c137d, type: 3}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 509594386}
+    - target: {fileID: 5866666020855195690, guid: 286f0623ffc3cd745b1b3b17277c137d,
+        type: 3}
+      propertyPath: attackAngleSpeed
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666020855195690, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
       propertyPath: patrolPoints.Array.data[0]
@@ -737,7 +746,7 @@ PrefabInstance:
     - target: {fileID: 9220896903211007491, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 286f0623ffc3cd745b1b3b17277c137d, type: 3}
@@ -988,6 +997,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089056748630706945, guid: 9048cbbceced13a48ac020828a396a59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9048cbbceced13a48ac020828a396a59, type: 3}

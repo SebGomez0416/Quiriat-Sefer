@@ -19,6 +19,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Transform spawnPoint;
 
     [Header("Settings")]
+    [SerializeField] private float attackAngleSpeed;
     [SerializeField] private short life;
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
@@ -30,7 +31,8 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Color colorless;
     [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject _ui;
-
+    
+    public float AttackAngleSpeed => attackAngleSpeed;
     public short Life
     {
         get => life;

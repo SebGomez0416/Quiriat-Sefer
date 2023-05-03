@@ -11,9 +11,11 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Transform spawnPoint;
     [SerializeField]private GameObject turret;
     [SerializeField]private GameObject barrel;
-    
+
 
     [Header("Settings")]
+    [SerializeField] private float rotationAngle;
+    [SerializeField] private float attackAngleSpeed;
     [SerializeField] private short life;
     [SerializeField] private float shotForce;
     [SerializeField] private float shotRate;
@@ -26,8 +28,50 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Color colorless;
     [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject _ui;
+    
+    public float AttackAngleSpeed => attackAngleSpeed;
+    public GameObject Bullet => bullet;
+    public Transform SpawnPoint => spawnPoint;
+    public float RotationAngle => rotationAngle;
+    public float ShotForce => shotForce;
+    public float ShotRate => shotRate;
 
+    public IASensor _iaSensor
+    {
+        get => iaSensor;
+        set => iaSensor = value;
+    }
 
+    public Type NewState
+    {
+        get => newState;
+        set => newState = value;
+    }
+
+    public GameObject Barrel
+    {
+        get => barrel;
+        set => barrel = value;
+    }
+
+    public short Life
+    {
+        get => life;
+        set => life = value;
+    }
+
+    public float ShotRateTime
+    {
+        get => shotRateTime;
+        set => shotRateTime = value;
+    }
+
+    public bool IsDamage
+    {
+        get => isDamage;
+        set => isDamage = value;
+    }
+    
     private void Awake()
     {
         iaSensor = GetComponent<IASensor>();
@@ -39,18 +83,23 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
         barrelmat.materials[1].color = colorless;
         maxLife = life;
     }
+    
+    private void Start()
+    {
+        _turretState = new TurretState(this);
+    }
 
     private void Update()
     {
-        //_turretState.UpdateState();
+        _turretState.UpdateState();
         iaSensor.UpdateSensor();
         UpdateLifeBar();
+       
     }
     
     public void IsDetected()
     {
-        if (iaSensor.Detected)
-            newState = typeof(BotShootState);
+        newState = iaSensor.Detected ? typeof(TurretShootState) : typeof(TurretIdleState);
     }
     
     public void OnDamage(short damage)

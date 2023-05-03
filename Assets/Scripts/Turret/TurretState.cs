@@ -13,11 +13,11 @@ public class TurretState : MonoBehaviour
         _turretStates = new Dictionary<Type, ICharacterStates>()
         {
             { typeof(TurretIdleState), new TurretIdleState(turret)},
-            { typeof(TurretShootState), new TurretShootState(turret)}
-            //{ typeof(TurretDeathState), new PlayerDeathState(turret) }
+            { typeof(TurretShootState), new TurretShootState(turret)},
+            { typeof(TurretDeathState), new TurretDeathState(turret) }
         };
       
-        ChangeState(typeof(PlayerIdleState));
+        ChangeState(typeof(TurretIdleState));
     }
 
     public void UpdateState()

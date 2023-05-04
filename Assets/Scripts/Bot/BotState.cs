@@ -5,7 +5,6 @@ using UnityEngine;
 
 public class BotState : MonoBehaviour
 {
-    
     public ICharacterStates CurrentState { get; private set; }
     
     private Dictionary<Type, ICharacterStates> _botStates;
@@ -34,7 +33,4 @@ public class BotState : MonoBehaviour
     {
         CurrentState = _botStates[newState];
     }
-    
-    
-    
 }

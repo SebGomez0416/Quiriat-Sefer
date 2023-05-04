@@ -3,17 +3,15 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.UI;
 
-[RequireComponent(typeof(NavMeshAgent))]
-public class Bot : MonoBehaviour,IDamageable,ISelectable
+public class Colossus : MonoBehaviour,IDamageable,ISelectable
 {
     private NavMeshAgent _agent;
-    private BotState _botState;
+    private ColossusState _colossusState;
     private Animator _animator;
     private bool isPatrol;
     [SerializeField]private Transform[] patrolPoints;
     private IASensor iaSensor;
     private Type newState;
-    [SerializeField]private GameObject weapon;
     [SerializeField]private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
 
@@ -44,7 +42,6 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
         set => isDamage = value;
     }
 
-    public GameObject Weapon => weapon;
     public GameObject Bullet => bullet;
     public Transform SpawnPoint => spawnPoint;
     
@@ -110,12 +107,12 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
 
     private void Start()
     {
-        _botState = new BotState(this);
+        _colossusState = new ColossusState(this);
     }
 
     private void Update()
     {
-        _botState.UpdateState();
+        _colossusState.UpdateState();
         iaSensor.UpdateSensor();
         UpdateLifeBar();
     }
@@ -123,7 +120,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     public void IsDetected()
     {
         if (iaSensor.Detected)
-            newState = typeof(BotShootState);
+            newState = typeof(ColossusShootState);
     }
     
     public void OnDamage(short damage)

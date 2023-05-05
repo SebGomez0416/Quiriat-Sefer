@@ -32,7 +32,7 @@ public class ColossusWalkState : ICharacterStates
         _colossus.IsDetected();
         
         if (_colossus.IsDamage) _colossus.NewState = typeof(ColossusDeathState);
-
+        
         return  _colossus.NewState;
     }
 

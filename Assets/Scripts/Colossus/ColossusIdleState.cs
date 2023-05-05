@@ -14,6 +14,7 @@ public class ColossusIdleState : ICharacterStates
     public Type UpdateState()
     {    
         _colossus.Animator.SetTrigger("Idle");
+        _colossus.Agent.isStopped = true;
         Timer();
         _colossus.IsDetected();
         
@@ -25,8 +26,9 @@ public class ColossusIdleState : ICharacterStates
     private void Timer()
     {
         time += Time.deltaTime;
-        if (!(time >= 5.4f)) return;
+        if (!(time >= 2.0f)) return;
         _colossus.IsPatrol = true;
+        _colossus.Agent.isStopped = false;
         _colossus.NewState = typeof(ColossusWalkState);
         time = 0;
     }

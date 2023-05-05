@@ -13,9 +13,10 @@ public class ColossusState : MonoBehaviour
         _ColossusStates = new Dictionary<Type, ICharacterStates>()
         {
             { typeof(ColossusIdleState), new ColossusIdleState(colossus) },
-            { typeof(ColossusShootState), new ColossusShootState(colossus) },
+            { typeof(ColossusHitState), new ColossusHitState(colossus) },
             { typeof(ColossusWalkState), new ColossusWalkState(colossus) },
-            { typeof(ColossusDeathState), new ColossusDeathState(colossus) }
+            { typeof(ColossusDeathState), new ColossusDeathState(colossus) },
+            { typeof(ColossusFollowState), new ColossusFollowState(colossus) }
         };
 
         ChangeState(typeof(ColossusIdleState));

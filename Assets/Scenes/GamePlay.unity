@@ -261,7 +261,7 @@ GameObject:
   m_Component:
   - component: {fileID: 152097739}
   m_Layer: 0
-  m_Name: SpawnPoint
+  m_Name: damageArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -275,7 +275,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 152097738}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.375, y: 5.77, z: 7.98}
+  m_LocalPosition: {x: -1.48, y: 3.36, z: 4.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -982,10 +982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5412c698c289c24eb16797230fc9c7c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  visionAngle: 139
+  visionAngle: 360
   visionColor: {r: 0.38614988, g: 1, b: 0, a: 0.16470589}
   detectedColor: {r: 1, g: 0, b: 0, a: 0.09803922}
-  maxVisionDistance: 12.21
+  maxVisionDistance: 44.5
   target: {fileID: 1322928412}
 --- !u!114 &1759640660
 MonoBehaviour:
@@ -1004,12 +1004,12 @@ MonoBehaviour:
   - {fileID: 1848190731}
   - {fileID: 460059237}
   - {fileID: 1879173566}
-  bullet: {fileID: 5113874625558920924, guid: a3edf2ddf9484b6478469ac517d1a37e, type: 3}
-  spawnPoint: {fileID: 152097739}
+  damageArea: {fileID: 152097739}
   attackAngleSpeed: 100
+  damageRadius: 3
   life: 180
-  shotForce: 6000
-  shotRate: 3
+  punchDamage: 30
+  punchRate: 4
   colorless: {r: 0, g: 0, b: 0, a: 0}
   lifeBar: {fileID: 397471866}
   _ui: {fileID: 1135355221}
@@ -1301,7 +1301,7 @@ PrefabInstance:
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 84.32
+      value: 84.4
       objectReference: {fileID: 0}
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
@@ -1311,7 +1311,7 @@ PrefabInstance:
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 63.74
+      value: 104.1
       objectReference: {fileID: 0}
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}

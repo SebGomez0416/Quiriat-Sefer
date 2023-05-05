@@ -12,16 +12,17 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     [SerializeField]private Transform[] patrolPoints;
     private IASensor iaSensor;
     private Type newState;
-    [SerializeField]private GameObject bullet;
-    [SerializeField] private Transform spawnPoint;
+    private bool hit;
+    [SerializeField] private Transform damageArea;
 
     [Header("Settings")]
     [SerializeField] private float attackAngleSpeed;
+    [SerializeField] private float damageRadius;
     [SerializeField] private short life;
-    [SerializeField] private float shotForce;
-    [SerializeField] private float shotRate;
+    [SerializeField] private short punchDamage;
+    [SerializeField] private float punchRate;
     private float maxLife;
-    private float shotRateTime;
+    private float punchRateTime;
     private bool isDamage;
     private SkinnedMeshRenderer mat;
     private Color standart;
@@ -29,7 +30,14 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject _ui;
     
+    public float DamageRadius => damageRadius;
     public float AttackAngleSpeed => attackAngleSpeed;
+    
+    public bool Hit
+    {
+        get => hit;
+        set => hit = value;
+    }
     public short Life
     {
         get => life;
@@ -42,25 +50,24 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
         set => isDamage = value;
     }
 
-    public GameObject Bullet => bullet;
-    public Transform SpawnPoint => spawnPoint;
+    public Transform DamageArea => damageArea;
     
-    public float ShotForce
+    public short PunchDamage
     {
-        get => shotForce;
-        set => shotForce = value;
+        get => punchDamage;
+        set => punchDamage = value;
     }
 
-    public float ShotRate
+    public float PunchRate
     {
-        get => shotRate;
-        set => shotRate = value;
+        get => punchRate;
+        set => punchRate = value;
     }
 
-    public float ShotRateTime
+    public float PunchRateTime
     {
-        get => shotRateTime;
-        set => shotRateTime = value;
+        get => punchRateTime;
+        set => punchRateTime = value;
     }
 
     public IASensor _iaSensor
@@ -120,7 +127,7 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     public void IsDetected()
     {
         if (iaSensor.Detected)
-            newState = typeof(ColossusShootState);
+         newState = typeof(ColossusFollowState);
     }
     
     public void OnDamage(short damage)
@@ -142,5 +149,14 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     {
         _ui.transform.forward = iaSensor.Target.position-_ui.transform.position;
         lifeBar.fillAmount = life/maxLife;
+    }
+    
+    private void OnDrawGizmos()
+    {
+        if (newState == typeof(ColossusHitState))
+        {
+            Gizmos.color= Color.red;
+            Gizmos.DrawWireSphere(DamageArea.position,DamageRadius);
+        }
     }
 }

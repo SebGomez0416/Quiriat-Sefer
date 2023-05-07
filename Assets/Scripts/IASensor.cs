@@ -10,6 +10,7 @@ public class IASensor : MonoBehaviour
     [SerializeField] private Color detectedColor;
     [SerializeField] private float maxVisionDistance;
     [SerializeField] private Transform target;
+    [SerializeField] private LayerMask layer;  
     private bool detected;
     
     public Color VisionColor
@@ -33,10 +34,18 @@ public class IASensor : MonoBehaviour
     {
         detected = false;
         Vector3 playerVector = target.position - transform.position;
+       // Debug.DrawRay(transform.position, playerVector.normalized*maxVisionDistance,Color.red);
         if (Vector3.Angle(playerVector.normalized, transform.forward) < visionAngle * 0.5f)
         {
             if (playerVector.magnitude < maxVisionDistance)
-                detected = true;
+            {
+                if (!Physics.Raycast(transform.position, playerVector.normalized, maxVisionDistance, layer))
+                {
+                    //Debug.DrawRay(transform.position, playerVector.normalized*maxVisionDistance,Color.blue);
+                    detected = true;
+                }
+                   
+            }
         }
     }
 }

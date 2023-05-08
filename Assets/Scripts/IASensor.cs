@@ -34,17 +34,16 @@ public class IASensor : MonoBehaviour
     {
         detected = false;
         Vector3 playerVector = target.position - transform.position;
-       // Debug.DrawRay(transform.position, playerVector.normalized*maxVisionDistance,Color.red);
+       Debug.DrawRay(transform.position, playerVector.normalized*maxVisionDistance,Color.red);
         if (Vector3.Angle(playerVector.normalized, transform.forward) < visionAngle * 0.5f)
         {
             if (playerVector.magnitude < maxVisionDistance)
             {
                 if (!Physics.Raycast(transform.position, playerVector.normalized, maxVisionDistance, layer))
                 {
-                    //Debug.DrawRay(transform.position, playerVector.normalized*maxVisionDistance,Color.blue);
+                    Debug.DrawRay(transform.position, playerVector.normalized*maxVisionDistance,Color.blue);
                     detected = true;
                 }
-                   
             }
         }
     }

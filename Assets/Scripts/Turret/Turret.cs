@@ -11,6 +11,7 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Transform spawnPoint;
     [SerializeField]private GameObject turret;
     [SerializeField]private GameObject barrel;
+    [SerializeField] private Transform virtualCamera;
 
 
     [Header("Settings")]
@@ -120,7 +121,7 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
 
     private void UpdateLifeBar()
     {
-        _ui.transform.forward = iaSensor.Target.position-_ui.transform.position;
+        _ui.transform.LookAt(virtualCamera.position);
         lifeBar.fillAmount = life/maxLife;
     }
 }

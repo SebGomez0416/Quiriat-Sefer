@@ -14,6 +14,7 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     private Type newState;
     private bool hit;
     [SerializeField] private Transform damageArea;
+    [SerializeField] private Transform virtualCamera;
 
     [Header("Settings")]
     [SerializeField] private float attackAngleSpeed;
@@ -147,7 +148,7 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
 
     private void UpdateLifeBar()
     {
-        _ui.transform.forward = iaSensor.Target.position-_ui.transform.position;
+        _ui.transform.LookAt(virtualCamera.position);
         lifeBar.fillAmount = life/maxLife;
     }
     

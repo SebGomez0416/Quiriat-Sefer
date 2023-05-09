@@ -16,6 +16,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     [SerializeField]private GameObject weapon;
     [SerializeField]private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
+    [SerializeField] private Transform virtualCamera;
 
     [Header("Settings")]
     [SerializeField] private float attackAngleSpeed;
@@ -143,7 +144,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
 
     private void UpdateLifeBar()
     {
-        _ui.transform.forward = iaSensor.Target.position-_ui.transform.position;
+        _ui.transform.LookAt(virtualCamera.position);
         lifeBar.fillAmount = life/maxLife;
     }
 }

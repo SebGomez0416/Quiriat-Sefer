@@ -12,6 +12,8 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private int fieldOfViewMax;
     [SerializeField] private int fieldOfViewMin;
     [SerializeField] private float zoomSpeed;
+    [SerializeField] private Transform player;
+    
     private float targetFieldOfView;
 
     private void Start()
@@ -24,6 +26,7 @@ public class CameraSystem : MonoBehaviour
        HandleCameraMovement();
        HandleCameraRotation();
        HandleCameraZoom();
+       LookPlayer();
     }
 
     private void HandleCameraMovement()
@@ -82,4 +85,22 @@ public class CameraSystem : MonoBehaviour
         virtualCamera.m_Lens.FieldOfView = Mathf.Lerp(virtualCamera.m_Lens.FieldOfView, targetFieldOfView,
             Time.deltaTime * zoomSpeed);
     }
+
+    private void LookPlayer()
+    {
+        if (Input.GetKey(KeyCode.F))
+        {
+            targetFieldOfView= fieldOfViewMax/2;
+            transform.position = player.position; 
+
+            Vector3 newDir;
+            newDir.x = Mathf.Clamp(transform.position.x,  -5f, 318f);
+            newDir.z = Mathf.Clamp(transform.position.z,  -73f, 210f);
+            newDir.y = 0f;
+
+            transform.position = newDir;
+        }
+    }
+
+   
 }

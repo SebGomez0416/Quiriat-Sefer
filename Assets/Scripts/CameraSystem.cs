@@ -13,7 +13,7 @@ public class CameraSystem : MonoBehaviour
     [SerializeField] private int fieldOfViewMin;
     [SerializeField] private float zoomSpeed;
     [SerializeField] private Transform player;
-    
+
     private float targetFieldOfView;
 
     private void Start()
@@ -101,6 +101,4 @@ public class CameraSystem : MonoBehaviour
             transform.position = newDir;
         }
     }
-
-   
 }

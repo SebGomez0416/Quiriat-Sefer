@@ -5,6 +5,8 @@ public class BotDeathState : ICharacterStates
 {
     private Bot _bot;
     private float time;
+    private bool death;
+    private float timeToExplosion;
     
     public BotDeathState(Bot bot)
     {
@@ -22,10 +24,13 @@ public class BotDeathState : ICharacterStates
         }
         else
         {
+            timeToExplosion += Time.deltaTime;
             _bot.Animator.SetTrigger("Death");
+            ActiveExplosion();
+           
             _bot.Weapon.SetActive(false);
             _bot.NewState = null;
-            Transform.Destroy(_bot.gameObject,5f);
+            Transform.Destroy(_bot.gameObject,6f);
         }
 
         return _bot.NewState;
@@ -38,6 +43,20 @@ public class BotDeathState : ICharacterStates
         _bot.IsDamage = false;
         _bot.NewState = typeof(BotIdleState);
         time = 0;
+    }
+
+    private void ActiveExplosion()
+    {
+        if (timeToExplosion >= 2f && !death)
+        {    
+            death = true;
+            _bot.Explosion.Play();
+        }
+
+        if (!(timeToExplosion >= 3.5f)) return;
+        timeToExplosion = 0;
+        _bot.Mat.enabled = false;
+        _bot.UI.SetActive(false);
     }
 
 }

@@ -30,7 +30,23 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Color colorless;
     [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject _ui;
+    [SerializeField] private ParticleSystem explosion;
+    public ParticleSystem Explosion
+    {
+        get => explosion;
+        set => explosion = value;
+    }
+    public GameObject UI
+    {
+        get => _ui;
+        set => _ui = value;
+    }
     
+    public SkinnedMeshRenderer Mat
+    {
+        get => mat;
+        set => mat = value;
+    }
     public float DamageRadius => damageRadius;
     public float AttackAngleSpeed => attackAngleSpeed;
     

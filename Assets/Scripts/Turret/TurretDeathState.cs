@@ -4,6 +4,8 @@ using UnityEngine;
 public class TurretDeathState : ICharacterStates
 {
     private Turret _turret;
+    private bool death;
+    private float timeToExplosion;
 
     public TurretDeathState(Turret turret)
     {
@@ -12,10 +14,28 @@ public class TurretDeathState : ICharacterStates
 
     public Type UpdateState()
     {
+        timeToExplosion += Time.deltaTime;
+        ActiveExplosion();
+        
         _turret.NewState = null;
-        Transform.Destroy(_turret.gameObject,5f);
+        Transform.Destroy(_turret.gameObject,4f);
 
         return _turret.NewState;
+    }
+    
+    private void ActiveExplosion()
+    {
+        if (!death)
+        {    
+            death = true;
+            _turret.Explosion.Play();
+        }
+
+        if (!(timeToExplosion >= 1f)) return;
+        timeToExplosion = 0;
+        _turret.TurretMat.enabled = false;
+        _turret.BarrelMat.enabled = false;
+        _turret.UI.SetActive(false);
     }
 
 }

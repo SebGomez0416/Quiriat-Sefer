@@ -3,10 +3,7 @@ using UnityEngine;
 public class ClickGround : MonoBehaviour
 {
     [SerializeField] private ParticleSystem clickGround;
-    
-    
-    
-    
+
     private void Update()
     {
         RaycastHit hit;

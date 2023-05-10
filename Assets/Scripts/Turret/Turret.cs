@@ -29,6 +29,29 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Color colorless;
     [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject _ui;
+    [SerializeField] private ParticleSystem explosion;
+    
+    public ParticleSystem Explosion
+    {
+        get => explosion;
+        set => explosion = value;
+    }
+    public GameObject UI
+    {
+        get => _ui;
+        set => _ui = value;
+    }
+    
+    public MeshRenderer TurretMat
+    {
+        get => turretmat;
+        set => turretmat = value;
+    }
+    public MeshRenderer BarrelMat
+    {
+        get => barrelmat;
+        set => barrelmat = value;
+    }
     
     public float AttackAngleSpeed => attackAngleSpeed;
     public GameObject Bullet => bullet;

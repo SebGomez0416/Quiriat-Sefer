@@ -17,6 +17,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     [SerializeField]private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
     [SerializeField] private Transform virtualCamera;
+    [SerializeField] private ParticleSystem explosion;
 
     [Header("Settings")]
     [SerializeField] private float attackAngleSpeed;
@@ -31,8 +32,25 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     [SerializeField] private Color colorless;
     [SerializeField] private Image lifeBar;
     [SerializeField] private GameObject _ui;
+
+    public GameObject UI
+    {
+        get => _ui;
+        set => _ui = value;
+    }
     
     public float AttackAngleSpeed => attackAngleSpeed;
+    
+    public SkinnedMeshRenderer Mat
+    {
+        get => mat;
+        set => mat = value;
+    }
+    public ParticleSystem Explosion
+    {
+        get => explosion;
+        set => explosion = value;
+    }
     public short Life
     {
         get => life;

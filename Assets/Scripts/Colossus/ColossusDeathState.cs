@@ -5,6 +5,8 @@ public class ColossusDeathState : ICharacterStates
 {
     private Colossus _colossus;
     private float time;
+    private bool death;
+    private float timeToExplosion;
     
     public ColossusDeathState(Colossus colossus)
     {
@@ -21,9 +23,12 @@ public class ColossusDeathState : ICharacterStates
         }
         else
         {
+            timeToExplosion += Time.deltaTime;
             _colossus.Animator.SetTrigger("Death");
+            ActiveExplosion();
+            
             _colossus.NewState = null;
-            Transform.Destroy(_colossus.gameObject,5f);
+            Transform.Destroy(_colossus.gameObject,7f);
         }
 
         return _colossus.NewState;
@@ -36,6 +41,20 @@ public class ColossusDeathState : ICharacterStates
         _colossus.IsDamage = false;
         _colossus.NewState = typeof(ColossusIdleState);
         time = 0;
+    }
+    
+    private void ActiveExplosion()
+    {
+        if (timeToExplosion >= 3f && !death)
+        {    
+            death = true;
+            _colossus.Explosion.Play();
+        }
+
+        if (!(timeToExplosion >= 4.4f)) return;
+        timeToExplosion = 0;
+        _colossus.Mat.enabled = false;
+        _colossus.UI.SetActive(false);
     }
 
 }

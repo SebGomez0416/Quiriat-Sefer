@@ -43,7 +43,7 @@ public class PlayerDeathState : ICharacterStates
     private void Timer()
     {
         time += Time.deltaTime;
-        if (!(time >= 1.3f)) return;
+        if (!(time >= 0.5f)) return;
         _player.IsDamage = false;
         time = 0;
     }

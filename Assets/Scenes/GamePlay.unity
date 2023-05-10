@@ -987,7 +987,7 @@ Transform:
   m_Children:
   - {fileID: 1726238327}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &184921043
 MonoBehaviour:
@@ -1339,7 +1339,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &263825853
 PrefabInstance:
@@ -3859,7 +3859,7 @@ Transform:
   m_Children:
   - {fileID: 1884088543}
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 179.627, z: 0}
 --- !u!1001 &765837854
 PrefabInstance:
@@ -4663,7 +4663,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &840050504
 PrefabInstance:
@@ -8836,6 +8836,10 @@ PrefabInstance:
       propertyPath: target
       value: 
       objectReference: {fileID: 1322928412}
+    - target: {fileID: 1491586066, guid: 286f0623ffc3cd745b1b3b17277c137d, type: 3}
+      propertyPath: maxVisionDistance
+      value: 34.12
+      objectReference: {fileID: 0}
     - target: {fileID: 2128229169, guid: 286f0623ffc3cd745b1b3b17277c137d, type: 3}
       propertyPath: m_Camera
       value: 
@@ -8928,7 +8932,7 @@ PrefabInstance:
     - target: {fileID: 9220896903211007491, guid: 286f0623ffc3cd745b1b3b17277c137d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 286f0623ffc3cd745b1b3b17277c137d, type: 3}
@@ -10973,7 +10977,7 @@ PrefabInstance:
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 250.1
+      value: 190.8
       objectReference: {fileID: 0}
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
@@ -10983,7 +10987,7 @@ PrefabInstance:
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 144
+      value: 149.2
       objectReference: {fileID: 0}
     - target: {fileID: 717736555617713633, guid: 94623a99e2ed9c24b8a8baaee4351e58,
         type: 3}
@@ -11442,6 +11446,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Turret
+      objectReference: {fileID: 0}
+    - target: {fileID: 4089056748630706945, guid: 9048cbbceced13a48ac020828a396a59,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9048cbbceced13a48ac020828a396a59, type: 3}

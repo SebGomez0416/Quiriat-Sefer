@@ -113,7 +113,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         _playerState = new PlayerStates(this);
         walkSpeed = _agent.speed;
-        runSpeed = _agent.speed * 4.2f;
+        runSpeed = _agent.speed * 5f;
     }
 
     private void Update()

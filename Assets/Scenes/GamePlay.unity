@@ -2996,7 +2996,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 486924497}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ControlsButton
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &486924497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3518,7 +3530,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 607083216}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: MenuButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &607083216
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5808,7 +5832,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 908637228}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: Replay
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &908637228
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5864,7 +5900,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &929335319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6386,7 +6422,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1044314063}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ControlsButton
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1044314063
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7520,7 +7568,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1296341940}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SettingsButton
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
 --- !u!114 &1296341940
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8842,7 +8902,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1492403899}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: Resume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1492403899
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10020,9 +10092,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc38ed33be489ad4baef4e8b1a9e98c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  settings: {fileID: 0}
-  controls: {fileID: 0}
-  pause: {fileID: 0}
+  settings: {fileID: 1323485838}
+  controls: {fileID: 416613227}
+  pause: {fileID: 929335318}
 --- !u!1001 &1640600376
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11679,7 +11751,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1953614514}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: SettingsButton
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1953614514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12275,6 +12359,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1548310080920259488, guid: b8b98c4af14f8f04aaf15bf1cc60d34c,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1548310080920259489, guid: b8b98c4af14f8f04aaf15bf1cc60d34c,
         type: 3}
       propertyPath: m_RootOrder
@@ -12420,7 +12509,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2034755244}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1638045876}
+        m_TargetAssemblyTypeName: Pause, Assembly-CSharp
+        m_MethodName: ExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2034755244
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13601,6 +13702,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1909159232756424883, guid: 15f4f6505cddf8d48bfdf796aa95fd51,
+        type: 3}
+      propertyPath: useUnscaledTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1909159232756424885, guid: 15f4f6505cddf8d48bfdf796aa95fd51,
         type: 3}

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -7,9 +8,12 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject play;
     [SerializeField] private GameObject credits;
     [SerializeField] private GameObject settings;
-  
+    [SerializeField] private Animator _animator;
+
+
     public void PlayButton(bool set)
     {
+        _animator.SetTrigger("GetUp");
         menu.SetActive(!set);
         play.SetActive(set);
     }

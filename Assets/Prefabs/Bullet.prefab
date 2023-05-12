@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3104054824763781215}
   - component: {fileID: 4233084275098097654}
   - component: {fileID: -3389963805131003998}
-  - component: {fileID: 5238838875080816072}
+  - component: {fileID: 7582966099871904949}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -131,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 30
   hit: {fileID: 8386169900331708917}
---- !u!82 &5238838875080816072
+--- !u!82 &7582966099871904949
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,7 +143,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 19dca4ce678b30b4f988792787dd22e3, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0

@@ -115,6 +115,7 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
 
     private void Update()
     {
+        if (DataBetweenScenes.instance.isPaused) return;
         _turretState.UpdateState();
         iaSensor.UpdateSensor();
         UpdateLifeBar();
@@ -134,6 +135,7 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
 
     public void SetSelection(bool state)
     {
+        if (turretmat == null || barrelmat == null) return;
         // activa y desactiva el OutLine
         turretmat.materials[1].color = state ? standart : colorless;
         barrelmat.materials[1].color = state ? standart : colorless;

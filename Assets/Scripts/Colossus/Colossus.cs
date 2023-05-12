@@ -136,6 +136,7 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
 
     private void Update()
     {
+        if (DataBetweenScenes.instance.isPaused) return;
         _colossusState.UpdateState();
         iaSensor.UpdateSensor();
         UpdateLifeBar();
@@ -155,6 +156,7 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
 
     public void SetSelection(bool state)
     {
+        if (mat == null) return;
         // activa y desactiva el OutLine
         mat.materials[1].color = state ? standart : colorless;
         

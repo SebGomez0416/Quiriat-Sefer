@@ -10,6 +10,10 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject settings;
     [SerializeField] private Animator _animator;
 
+    private void Start()
+    {
+        DataBetweenScenes.instance.Init();
+    }
 
     public void PlayButton(bool set)
     {

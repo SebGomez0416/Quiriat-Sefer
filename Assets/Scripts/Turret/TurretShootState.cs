@@ -30,10 +30,10 @@ public class TurretShootState : ICharacterStates
             if (Time.time > _turret.ShotRateTime)
             {
                 GameObject newBullet;
-                newBullet = Editor.Instantiate(_turret.Bullet, _turret.SpawnPoint.position, _turret.SpawnPoint.rotation);
+                newBullet = MonoBehaviour.Instantiate(_turret.Bullet, _turret.SpawnPoint.position, _turret.SpawnPoint.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(_turret.SpawnPoint.forward*_turret.ShotForce);
                 _turret.ShotRateTime = Time.time + _turret.ShotRate;
-                Editor.Destroy(newBullet,4);
+                Transform.Destroy(newBullet,4);
             }
         }
 

@@ -8,6 +8,8 @@ public class BotDeathState : ICharacterStates
     private bool death;
     private float timeToExplosion;
     
+    public static event Action OnExplosion;
+    
     public BotDeathState(Bot bot)
     {
         _bot = bot;
@@ -48,15 +50,19 @@ public class BotDeathState : ICharacterStates
     private void ActiveExplosion()
     {
         if (timeToExplosion >= 2f && !death)
-        {    
+        {  
             death = true;
             _bot.Explosion.Play();
         }
-
-        if (!(timeToExplosion >= 3.5f)) return;
-        timeToExplosion = 0;
-        _bot.Mat.enabled = false;
-        _bot.UI.SetActive(false);
+        
+        if (timeToExplosion >= 3f)
+        {    
+            OnExplosion?.Invoke();
+            _bot.Mat.enabled = false;
+            _bot.UI.SetActive(false);
+            timeToExplosion = -10f;
+        }
+        
     }
 
 }

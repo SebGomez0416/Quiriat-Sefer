@@ -8,6 +8,8 @@ public class ColossusDeathState : ICharacterStates
     private bool death;
     private float timeToExplosion;
     
+    public static event Action OnExplosion;
+    
     public ColossusDeathState(Colossus colossus)
     {
         _colossus = colossus;
@@ -51,10 +53,11 @@ public class ColossusDeathState : ICharacterStates
             _colossus.Explosion.Play();
         }
 
-        if (!(timeToExplosion >= 4.4f)) return;
-        timeToExplosion = 0;
+        if (!(timeToExplosion >= 4f)) return;
+        OnExplosion?.Invoke();
         _colossus.Mat.enabled = false;
         _colossus.UI.SetActive(false);
+        timeToExplosion = -10f;
     }
 
 }

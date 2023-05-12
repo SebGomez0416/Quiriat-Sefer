@@ -36,10 +36,10 @@ public class BotShootState : ICharacterStates
             if (Time.time > _bot.ShotRateTime)
             {
                 GameObject newBullet;
-                newBullet = Editor.Instantiate(_bot.Bullet, _bot.SpawnPoint.position, _bot.SpawnPoint.rotation);
+                newBullet = MonoBehaviour.Instantiate(_bot.Bullet, _bot.SpawnPoint.position, _bot.SpawnPoint.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(_bot.SpawnPoint.forward*_bot.ShotForce);
                 _bot.ShotRateTime = Time.time + _bot.ShotRate;
-                Editor.Destroy(newBullet,4);
+                Transform.Destroy(newBullet,4);
             }
         }
         

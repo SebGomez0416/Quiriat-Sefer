@@ -118,8 +118,8 @@ public class Player : MonoBehaviour,IDamageable
 
     private void Update()
     {
-       _playerState.UpdateState();
-
+        if (DataBetweenScenes.instance.isPaused) return;
+        _playerState.UpdateState();
     }
 
     public void IsDoubleClick()

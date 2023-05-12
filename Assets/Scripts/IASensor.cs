@@ -1,6 +1,6 @@
 using System;
-using UnityEditor;
 using UnityEngine;
+using UnityEditor;
 
 public class IASensor : MonoBehaviour
 {
@@ -45,6 +45,7 @@ public class IASensor : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(IASensor))]
 public class EnemyVisionSensor : Editor
 {
@@ -60,3 +61,4 @@ public class EnemyVisionSensor : Editor
         Handles.DrawSolidArc(ai.transform.position,Vector3.up,startPoint,ai.VisionAngle,ai.MaxVisionDistance);
    }
 }
+#endif

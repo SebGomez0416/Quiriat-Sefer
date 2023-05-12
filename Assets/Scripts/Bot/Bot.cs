@@ -134,6 +134,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
 
     private void Update()
     {
+        if (DataBetweenScenes.instance.isPaused) return;
         _botState.UpdateState();
         iaSensor.UpdateSensor();
         UpdateLifeBar();
@@ -149,10 +150,13 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     {
         life -= damage;
         isDamage = true;
+        
     }
 
     public void SetSelection(bool state)
     {
+        if (mat == null) return;
+        
         // activa y desactiva el OutLine
         mat.materials[1].color = state ? standart : colorless;
         

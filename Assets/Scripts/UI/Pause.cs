@@ -7,29 +7,32 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject settings;
     [SerializeField] private GameObject controls;
     [SerializeField] private GameObject pause;
-    private bool isPaused;
+    
+    public static event Action OnPause;
+
+    private void Start()
+    {
+        DataBetweenScenes.instance.Init();
+    }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape) && !isPaused)
-        {
-            pause.SetActive(true);
+        if (Input.GetKeyDown(KeyCode.Escape) && !DataBetweenScenes.instance.isPaused)
             UpdateGameState();
-        }
-           
     }
 
     private void UpdateGameState()
     {
-        isPaused = !isPaused;
-        Time.timeScale = isPaused ? 0f : 1f;
+        DataBetweenScenes.instance.isPaused = !DataBetweenScenes.instance.isPaused;
+        pause.SetActive(DataBetweenScenes.instance.isPaused);
+        OnPause?.Invoke();
+        Time.timeScale = DataBetweenScenes.instance.isPaused ? 0f : 1f;
     }
 
-
-    public void Resume()
+    public void Play()
     {
-        pause.SetActive(false);
-        UpdateGameState();
+       Debug.Log("entro");
+       UpdateGameState();
     }
     
     public void Replay()
@@ -52,7 +55,7 @@ public class Pause : MonoBehaviour
     
     public void SettingsButton(bool set)
     {
-       pause.SetActive(!set);
+        pause.SetActive(!set);
         settings.SetActive(set);
     }
     
@@ -60,4 +63,6 @@ public class Pause : MonoBehaviour
     {
         Application.Quit();
     }
+
+    
 }

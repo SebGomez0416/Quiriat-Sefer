@@ -5,6 +5,8 @@ public class DataBetweenScenes : MonoBehaviour
     public static DataBetweenScenes instance;
     
     public bool isPaused { get; set; }
+    public bool muteMusic { get; set; }
+    public bool muteSFX { get; set; }
     
     private void Awake()
     {

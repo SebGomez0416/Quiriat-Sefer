@@ -9,10 +9,12 @@ public class Pause : MonoBehaviour
     [SerializeField] private GameObject pause;
     
     public static event Action OnPause;
+    public static event Action OnChangeScene;
 
     private void Start()
     {
         DataBetweenScenes.instance.Init();
+        OnChangeScene?.Invoke();
     }
 
     private void Update()
@@ -31,7 +33,6 @@ public class Pause : MonoBehaviour
 
     public void Play()
     {
-       Debug.Log("entro");
        UpdateGameState();
     }
     

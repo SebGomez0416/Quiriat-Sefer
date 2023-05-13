@@ -10,9 +10,12 @@ public class Menu : MonoBehaviour
     [SerializeField] private GameObject settings;
     [SerializeField] private Animator _animator;
 
+    public static event Action OnChangeScene;
+
     private void Start()
     {
         DataBetweenScenes.instance.Init();
+        OnChangeScene?.Invoke();
     }
 
     public void PlayButton(bool set)
@@ -23,7 +26,7 @@ public class Menu : MonoBehaviour
     }
     
     public void NewGameButton()
-    { 
+    {
         SceneManager.LoadScene("GamePlay");
     }
     

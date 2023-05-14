@@ -5,6 +5,8 @@ public class PlayerDeathState : ICharacterStates
 {
     private Player _player;
     private float time;
+    
+    public static event Action OnDying;
 
     public PlayerDeathState(Player player)
     {
@@ -22,13 +24,15 @@ public class PlayerDeathState : ICharacterStates
             _player.Animator.SetTrigger("Hurt");
             SetWeapon();
         }
-        else if(_player.Life <= 0 && _player.IsDamage)
+        else if(_player.Life <= 0 && _player.IsDamage && !DataBetweenScenes.instance.isDead)
         {
             _player.Animator.SetTrigger("Death");
             _player.Weapon.SetActive(false);
             _player.WeaponBack.SetActive(false);
             _player.NewState = null;
             Transform.Destroy(_player.gameObject,5f);
+            DataBetweenScenes.instance.isDead = true;
+            OnDying?.Invoke();
         }
 
         if (!_player.IsDamage)

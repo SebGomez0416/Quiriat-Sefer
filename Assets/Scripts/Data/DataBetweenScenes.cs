@@ -7,6 +7,8 @@ public class DataBetweenScenes : MonoBehaviour
     public bool isPaused { get; set; }
     public bool muteMusic { get; set; }
     public bool muteSFX { get; set; }
+    public bool isDead { get; set; }
+    public float numberOfEnemies { get; set; }
     
     private void Awake()
     {
@@ -27,6 +29,7 @@ public class DataBetweenScenes : MonoBehaviour
     public void Init()
     {
         isPaused = false;
+        isDead = false;
     }
     
 }

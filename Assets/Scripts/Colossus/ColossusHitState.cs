@@ -20,7 +20,7 @@ public class ColossusHitState : ICharacterStates
                 
          foreach (var obj in objs)
          {
-            if (obj.CompareTag("Player"))
+            if (obj.CompareTag("Player")&& !DataBetweenScenes.instance.isDead)
             {
                var target = obj.gameObject.GetComponent<IDamageable>();
                target?.OnDamage(_colossus.PunchDamage);

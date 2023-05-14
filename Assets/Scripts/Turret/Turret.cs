@@ -111,6 +111,7 @@ public class Turret : MonoBehaviour,IDamageable,ISelectable
     private void Start()
     {
         _turretState = new TurretState(this);
+        DataBetweenScenes.instance.numberOfEnemies ++;
     }
 
     private void Update()

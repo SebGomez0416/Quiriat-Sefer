@@ -132,8 +132,9 @@ public class Colossus : MonoBehaviour,IDamageable,ISelectable
     private void Start()
     {
         _colossusState = new ColossusState(this);
+        DataBetweenScenes.instance.numberOfEnemies ++;
     }
-
+    
     private void Update()
     {
         if (DataBetweenScenes.instance.isPaused) return;

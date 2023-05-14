@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -8,32 +7,33 @@ public class SoundSystem : MonoBehaviour
    [SerializeField] private AudioSource explosion;
    [SerializeField] private AudioSource click;
    [SerializeField] private AudioSource music;
+   
 
    [SerializeField] private AudioClip[] _audioClips;
 
    private void OnEnable()
    {
-      Pause .OnPause += OnPause;
-      BotDeathState.OnExplosion +=Explosion;
-      ColossusDeathState.OnExplosion +=Explosion;
-      TurretDeathState.OnExplosion +=Explosion;
+      UIController.OnPause += OnPause;
+      BotDeathState.OnDying +=Dying;
+      ColossusDeathState.OnDying +=Dying;
+      TurretDeathState.OnDying +=Dying;
       ClickGround.OnClickGround += Click;
       UISettings.OnMuteMusic += MuteMusic;
       UISettings.OnMuteSfx += MuteSfx;
-      Pause.OnChangeScene += ChangeScene;
+      UIController.OnChangeScene += ChangeScene;
       Menu.OnChangeScene += ChangeScene;
    }
 
    private void OnDisable()
    {
-      Pause .OnPause -= OnPause;
-      BotDeathState.OnExplosion -=Explosion;
-      ColossusDeathState.OnExplosion -=Explosion;
+      UIController.OnPause -= OnPause;
+      BotDeathState.OnDying -=Dying;
+      ColossusDeathState.OnDying -=Dying;
       ClickGround.OnClickGround -= Click;
-      TurretDeathState.OnExplosion -=Explosion;
+      TurretDeathState.OnDying -=Dying;
       UISettings.OnMuteMusic -= MuteMusic;
       UISettings.OnMuteSfx -= MuteSfx;
-      Pause.OnChangeScene -= ChangeScene;
+      UIController.OnChangeScene -= ChangeScene;
       Menu.OnChangeScene -= ChangeScene;
    }
 
@@ -52,7 +52,7 @@ public class SoundSystem : MonoBehaviour
       else  music.Play();
       
    }
-   private void Explosion()
+   private void Dying()
    {
       explosion.Play();
    }

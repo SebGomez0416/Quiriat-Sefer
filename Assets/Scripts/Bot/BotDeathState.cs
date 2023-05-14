@@ -8,7 +8,7 @@ public class BotDeathState : ICharacterStates
     private bool death;
     private float timeToExplosion;
     
-    public static event Action OnExplosion;
+    public static event Action OnDying;
     
     public BotDeathState(Bot bot)
     {
@@ -57,7 +57,7 @@ public class BotDeathState : ICharacterStates
         
         if (timeToExplosion >= 3f)
         {    
-            OnExplosion?.Invoke();
+            OnDying?.Invoke();
             _bot.Mat.enabled = false;
             _bot.UI.SetActive(false);
             timeToExplosion = -10f;

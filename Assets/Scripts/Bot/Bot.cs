@@ -130,6 +130,7 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     private void Start()
     {
         _botState = new BotState(this);
+        DataBetweenScenes.instance.numberOfEnemies ++;
     }
 
     private void Update()

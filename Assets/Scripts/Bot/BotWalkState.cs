@@ -26,8 +26,9 @@ public class BotWalkState : ICharacterStates
             _bot.NewState = null;
         }
 
-        if (_bot.transform.position == _bot.Agent.destination)
+        if ( Vector3.Distance(_bot.transform.position , _bot.Agent.destination) <= 5)
         {
+            _bot.Agent.destination = _bot.transform.position;
             _bot.NewState = typeof(BotIdleState);
         }
         _bot.IsDetected();
@@ -43,7 +44,7 @@ public class BotWalkState : ICharacterStates
         
         do
         {
-             aux=Random.Range(0, _bot.PatrolPoints.Length);
+           aux=Random.Range(0, _bot.PatrolPoints.Length);
             
         } while (aux == currentPatrolRoute);
 

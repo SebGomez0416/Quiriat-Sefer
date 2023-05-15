@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SoundSystem : MonoBehaviour
 {
-   [SerializeField] private AudioSource shoot;
+   [SerializeField] private AudioSource[] shoot;
    [SerializeField] private AudioSource explosion;
    [SerializeField] private AudioSource click;
    [SerializeField] private AudioSource music;
@@ -69,7 +69,8 @@ public class SoundSystem : MonoBehaviour
    
    private void MuteSfx()
    {
-      shoot.mute = DataBetweenScenes.instance.muteSFX;
+      shoot[0].mute = DataBetweenScenes.instance.muteSFX;
+      shoot[1].mute = DataBetweenScenes.instance.muteSFX;
       explosion.mute = DataBetweenScenes.instance.muteSFX;
       click.mute = DataBetweenScenes.instance.muteSFX;
    }

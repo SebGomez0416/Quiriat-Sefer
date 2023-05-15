@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class Player : MonoBehaviour,IDamageable
@@ -17,6 +18,9 @@ public class Player : MonoBehaviour,IDamageable
     [SerializeField]private GameObject bullet;
     [SerializeField] private Transform spawnPoint;
     private bool isShoot;
+    [SerializeField] private Transform virtualCamera;
+    [SerializeField] private Image lifeBar;
+    [SerializeField] private GameObject _ui;
 
     [Header("Settings")] 
     [SerializeField] private short life;
@@ -25,7 +29,9 @@ public class Player : MonoBehaviour,IDamageable
     private float shotRateTime;
     private GameObject enemyPosition;
     private bool isDamage;
+    private float maxLife;
     private ISelectable obj;
+    
     
     public GameObject EnemyPosition => enemyPosition;
     public GameObject Bullet => bullet;
@@ -107,6 +113,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         _agent = GetComponent<NavMeshAgent>();
         _animator = GetComponent<Animator>();
+        maxLife = life;
     }
 
     private void Start()
@@ -120,6 +127,7 @@ public class Player : MonoBehaviour,IDamageable
     {
         if (DataBetweenScenes.instance.isPaused) return;
         _playerState.UpdateState();
+        UpdateLifeBar();
     }
 
     public void IsDoubleClick()
@@ -134,6 +142,7 @@ public class Player : MonoBehaviour,IDamageable
             {
                 if (hit.collider.CompareTag("Enemy"))
                 {
+                   obj?.SetSelection(false);
                    enemyPosition = hit.transform.gameObject;
                    obj = enemyPosition.GetComponent<ISelectable>();
                    obj?.SetSelection(true);
@@ -186,6 +195,12 @@ public class Player : MonoBehaviour,IDamageable
     {
         life -= damage;
         isDamage = true;
+    }
+    
+    private void UpdateLifeBar()
+    {
+        _ui.transform.LookAt(virtualCamera.position);
+        lifeBar.fillAmount = life/maxLife;
     }
 }
 

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     [SerializeField] private short damage;
     [SerializeField] private ParticleSystem hit;
@@ -15,6 +15,7 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter(Collision c)
     {
+        if (c.gameObject.CompareTag("Enemy")) return;
         rb.velocity=Vector3.zero;
         _mesh.enabled = false;
         hit.Play();
@@ -22,4 +23,5 @@ public class Bullet : MonoBehaviour
         obj?.OnDamage(damage);
         Destroy(this.gameObject,1.0f);
     }
+    
 }

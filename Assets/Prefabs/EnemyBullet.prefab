@@ -13,10 +13,10 @@ GameObject:
   - component: {fileID: 3043064324624371976}
   - component: {fileID: 3104054824763781215}
   - component: {fileID: 4233084275098097654}
-  - component: {fileID: -3389963805131003998}
   - component: {fileID: 7582966099871904949}
+  - component: {fileID: 6336388305822358854}
   m_Layer: 0
-  m_Name: Bullet
+  m_Name: EnemyBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66,7 +66,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3089c285142de3244b3c4d1dd85fd935, type: 2}
+  - {fileID: 2100000, guid: c7282a1354cb36f47be76710fdb77769, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -117,20 +117,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-3389963805131003998
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5113874625558920924}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1cab87be5646c324fa43c72b5640baef, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  damage: 10
-  hit: {fileID: 8386169900331708917}
 --- !u!82 &7582966099871904949
 AudioSource:
   m_ObjectHideFlags: 0
@@ -227,6 +213,20 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &6336388305822358854
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5113874625558920924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e46881b0330c1d429c593162e4c5b22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 10
+  hit: {fileID: 8386169900331708917}
 --- !u!1001 &2751841500544957544
 PrefabInstance:
   m_ObjectHideFlags: 0

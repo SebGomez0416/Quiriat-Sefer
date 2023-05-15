@@ -151,7 +151,6 @@ public class Bot : MonoBehaviour,IDamageable,ISelectable
     {
         life -= damage;
         isDamage = true;
-        
     }
 
     public void SetSelection(bool state)

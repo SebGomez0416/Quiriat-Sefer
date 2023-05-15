@@ -29,7 +29,7 @@ public class PlayerShootState : ICharacterStates
                 newBullet = MonoBehaviour.Instantiate(_player.Bullet, _player.SpawnPoint.position, _player.SpawnPoint.rotation);
                 newBullet.GetComponent<Rigidbody>().AddForce(_player.SpawnPoint.forward*_player.ShotForce);
                 _player.ShotRateTime = Time.time + _player.ShotRate;
-               Transform.Destroy(newBullet,4);
+                Transform.Destroy(newBullet,0.5f);
             }
            
         }
